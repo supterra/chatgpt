@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Tester</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        #container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #text-box {
+            width: 100%;
+            height: 200px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Arial', 'Times New Roman', 'Helvetica', 'Calibri', 'Comic Sans MS', 'Georgia',
+                'Verdana', 'Courier New', 'Impact', 'Palatino', 'Garamond', 'Futura', 'Century Gothic', 
+                'Tahoma', 'Roboto', 'Open Sans', 'Lato', 'Montserrat', 'Raleway', 'Ubuntu', 'Brush Script', 
+                'Copperplate Gothic', 'Franklin Gothic', 'Baskerville', 'Lucida Sans', 'Rockwell', 'Gill Sans', 
+                'Avenir', 'Proxima Nova', 'Didot', sans-serif;
+        }
+
+        #font-select, #font-size-select {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Font Tester</h1>
+
+        <textarea id="text-box" placeholder="Type or paste your text here..."></textarea>
+
+        <div>
+            <label for="font-select">Select Font:</label>
+            <select id="font-select" onchange="changeFont()">
+                <option value="'Arial', sans-serif">Arial</option>
+                <option value="'Times New Roman', serif">Times New Roman</option>
+                <option value="'Helvetica', 'Arial', sans-serif">Helvetica</option>
+                <option value="'Calibri', sans-serif">Calibri</option>
+                <option value="'Comic Sans MS', cursive, sans-serif">Comic Sans MS</option>
+                <option value="'Georgia', serif">Georgia</option>
+                <option value="'Verdana', Geneva, sans-serif">Verdana</option>
+                <option value="'Courier New', monospace">Courier New</option>
+                <option value="'Impact', Charcoal, sans-serif">Impact</option>
+                <option value="'Palatino Linotype', 'Book Antiqua', Palatino, serif">Palatino</option>
+                <option value="'Garamond', serif">Garamond</option>
+                <option value="'Futura', sans-serif">Futura</option>
+                <option value="'Century Gothic', sans-serif">Century Gothic</option>
+                <option value="'Tahoma', Geneva, sans-serif">Tahoma</option>
+                <option value="'Roboto', sans-serif">Roboto</option>
+                <option value="'Open Sans', sans-serif">Open Sans</option>
+                <option value="'Lato', sans-serif">Lato</option>
+                <option value="'Montserrat', sans-serif">Montserrat</option>
+                <option value="'Raleway', sans-serif">Raleway</option>
+                <option value="'Ubuntu', sans-serif">Ubuntu</option>
+                <option value="'Brush Script MT', cursive">Brush Script</option>
+                <option value="'Copperplate Gothic', sans-serif">Copperplate Gothic</option>
+                <option value="'Franklin Gothic Medium', 'Franklin Gothic', sans-serif">Franklin Gothic</option>
+                <option value="'Baskerville', serif">Baskerville</option>
+                <option value="'Lucida Sans', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif">Lucida Sans</option>
+                <option value="'Rockwell', serif">Rockwell</option>
+                <option value="'Gill Sans', 'Gill Sans MT', Calibri, sans-serif">Gill Sans</option>
+                <option value="'Avenir', 'Avenir Next', sans-serif">Avenir</option>
+                <option value="'Proxima Nova', sans-serif">Proxima Nova</option>
+                <option value="'Didot', serif">Didot</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="font-size-select">Font Size:</label>
+            <select id="font-size-select" onchange="changeFontSize()">
+                <option value="12">12px</option>
+                <option value="16">16px</option>
+                <option value="20">20px</option>
+                <option value="24">24px</option>
+                <option value="30">30px</option>
+                <option value="36">36px</option>
+                <option value="48">48px</option>
+                <option value="60">60px</option>
+                <option value="72">72px</option>
+            </select>
+        </div>
+
+        <button onclick="resetStyles()">Reset</button>
+    </div>
+
+    <script>
+        function changeFont() {
+            var selectedFont = document.getElementById("font-select").value;
+            document.getElementById("text-box").style.fontFamily = selectedFont;
+        }
+
+        function changeFontSize() {
+            var selectedSize = document.getElementById("font-size-select").value;
+            document.getElementById("text-box").style.fontSize = selectedSize + "px";
+        }
+
+        function resetStyles() {
+            document.getElementById("text-box").style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+            document.getElementById("text-box").style.fontSize = "16px";
+            document.getElementById("font-select").value = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+            document.getElementById("font-size-select").value = "16";
+        }
+    </script>
+</body>
+</html>

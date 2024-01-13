@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #000;
+            color: #FFF;
+            font-family: 'Arial', sans-serif;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #startMessage {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .disco-light {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            animation: flash 1s infinite;
+        }
+
+        @keyframes flash {
+            0%, 100% {
+                box-shadow: 0 0 10px #FF0000, 0 0 20px #FF0000, 0 0 30px #FF0000;
+            }
+            25% {
+                box-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00;
+            }
+            50% {
+                box-shadow: 0 0 10px #0000FF, 0 0 20px #0000FF, 0 0 30px #0000FF;
+            }
+            75% {
+                box-shadow: 0 0 10px #FFFF00, 0 0 20px #FFFF00, 0 0 30px #FFFF00;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="startMessage">Click anywhere to start the fun!</div>
+    <script>
+        let startMessage = document.getElementById('startMessage');
+        let discoLight;
+
+        document.addEventListener('mousedown', function (e) {
+            startMessage.style.display = 'none';
+            let startX = e.clientX;
+            let startY = e.clientY;
+
+            function createDiscoLight(x, y) {
+                discoLight = document.createElement('div');
+                discoLight.classList.add('disco-light');
+                discoLight.style.left = x - 25 + 'px';
+                discoLight.style.top = y - 25 + 'px';
+                document.body.appendChild(discoLight);
+            }
+
+            function removeDiscoLight() {
+                if (discoLight) {
+                    document.body.removeChild(discoLight);
+                    discoLight = null;
+                }
+            }
+
+            document.addEventListener('mousemove', function (e) {
+                if (!discoLight) {
+                    createDiscoLight(e.clientX, e.clientY);
+                } else {
+                    updateDiscoLight(e.clientX, e.clientY);
+                }
+            });
+
+            document.addEventListener('mouseup', function () {
+                removeDiscoLight();
+            });
+
+            createDiscoLight(startX, startY);
+        });
+
+        function updateDiscoLight(x, y) {
+            if (discoLight) {
+                discoLight.style.left = x - 25 + 'px';
+                discoLight.style.top = y - 25 + 'px';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>True Calculator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+
+    #calculator {
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      text-align: center;
+      overflow: hidden;
+      max-width: 300px;
+      width: 100%;
+    }
+
+    #header {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #motto {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    #display {
+      font-size: 24px;
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .button {
+      font-size: 18px;
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background-color: #3498db; /* Professional blue color */
+      color: #fff;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.1s;
+      box-shadow: 0 4px #2980b9; /* 3D button effect */
+    }
+
+    .button:hover {
+      background-color: #2980b9;
+    }
+
+    .button:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 #2980b9;
+    }
+
+    #dmca {
+      font-size: 12px;
+      color: #888;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="calculator">
+    <div id="header">True Calculator</div>
+    <div id="motto">Your Trusted Calculations Partner</div>
+    <div id="display">0</div>
+    <button class="button" onclick="appendNumber('7')">7</button>
+    <button class="button" onclick="appendNumber('8')">8</button>
+    <button class="button" onclick="appendNumber('9')">9</button>
+    <button class="button" onclick="performOperation('+')">+</button>
+    <br>
+    <button class="button" onclick="appendNumber('4')">4</button>
+    <button class="button" onclick="appendNumber('5')">5</button>
+    <button class="button" onclick="appendNumber('6')">6</button>
+    <button class="button" onclick="performOperation('-')">-</button>
+    <br>
+    <button class="button" onclick="appendNumber('1')">1</button>
+    <button class="button" onclick="appendNumber('2')">2</button>
+    <button class="button" onclick="appendNumber('3')">3</button>
+    <button class="button" onclick="performOperation('*')">*</button>
+    <br>
+    <button class="button" onclick="appendNumber('0')">0</button>
+    <button class="button" onclick="clearDisplay()">C</button>
+    <button class="button" onclick="calculateResult()">=</button>
+    <button class="button" onclick="performOperation('/')">/</button>
+    <div id="dmca">© 2024 True Calculator. All rights reserved. DMCA Notice: This calculator is for educational purposes only.</div>
+  </div>
+
+  <script>
+    let display = document.getElementById('display');
+
+    function appendNumber(number) {
+      display.textContent += number;
+    }
+
+    function performOperation(operator) {
+      display.textContent += operator;
+    }
+
+    function calculateResult() {
+      // Intentionally generate wrong answers
+      display.textContent = Math.floor(Math.random() * 1000);
+    }
+
+    function clearDisplay() {
+      display.textContent = '';
+    }
+  </script>
+</body>
+</html>

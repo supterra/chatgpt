@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egyptian Ancient Symbols Converter</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        .converter-box {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        textarea {
+            width: calc(100% - 20px);
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            resize: none;
+            color: #333;
+            background-color: #fff;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .output-box {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #222;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+
+        #output {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .copy-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Egyptian Ancient Symbols Converter</h1>
+
+    <div class="converter-box">
+        <textarea id="inputText" placeholder="Enter your text here..."></textarea>
+        <button onclick="convertText()">Convert</button>
+    </div>
+
+    <div class="output-box">
+        <div id="output"></div>
+        <button class="copy-button" onclick="copyText()">Copy</button>
+    </div>
+
+    <script>
+        function convertText() {
+            const inputText = document.getElementById('inputText').value;
+            const outputDiv = document.getElementById('output');
+
+            // Map each English letter to its corresponding Egyptian ancient symbol
+            const symbolMap = {
+                'A': '𓀀', 'B': '𓀁', 'C': '𓀂', 'D': '𓀃', 'E': '𓀄',
+                'F': '𓀅', 'G': '𓀆', 'H': '𓀇', 'I': '𓀈', 'J': '𓀉',
+                'K': '𓀊', 'L': '𓀋', 'M': '𓀌', 'N': '𓀍', 'O': '𓀎',
+                'P': '𓀏', 'Q': '𓀐', 'R': '𓀑', 'S': '𓀒', 'T': '𓀓',
+                'U': '𓀔', 'V': '𓀕', 'W': '𓀖', 'X': '𓀗', 'Y': '𓀘',
+                'Z': '𓀙', ' ': ' ', '.': '.', ',': ',', '!': '!', '?': '?'
+                // Add more characters as needed
+            };
+
+            let convertedText = '';
+            for (let i = 0; i < inputText.length; i++) {
+                const char = inputText[i].toUpperCase();
+                convertedText += symbolMap[char] || char;
+            }
+
+            outputDiv.textContent = convertedText;
+        }
+
+        function copyText() {
+            const outputText = document.getElementById('output').textContent;
+            const textarea = document.createElement('textarea');
+            textarea.value = outputText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Text copied to clipboard!');
+        }
+    </script>
+
+</body>
+</html>
