@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureGuard - Your Security Partner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #f4f4f4; /* Light gray background */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+            justify-content: flex-start; /* Align content to the top */
+            color: #333; /* Dark gray text color */
+            font-family: 'Roboto', sans-serif; /* Use the Roboto font */
+            transition: background 1s ease; /* Background transition */
+        }
+
+        body.scan-completed {
+            background: #FF6347; /* Light red background when scan is completed */
+            animation: flashingBackground 1s infinite alternate; /* Flashing effect */
+        }
+
+        @keyframes flashingBackground {
+            0% {
+                background: #FF6347;
+            }
+            100% {
+                background: #C0392B; /* Darker red during flashing */
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333; /* Dark gray text color */
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555; /* Medium gray text color */
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #loading-bar {
+            width: 0;
+            height: 10px;
+            background-color: #333; /* Dark gray loading bar color */
+            border-radius: 5px; /* Rounded corners */
+            transition: width 2s; /* Animation duration */
+            margin-top: 20px;
+        }
+
+        #scan-button,
+        #scan-again-button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #333; /* Dark gray button color */
+            color: #fff; /* White text color */
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #scan-button:hover,
+        #scan-again-button:hover {
+            background-color: #555; /* Slightly darker gray on hover */
+        }
+
+        #warning-message {
+            display: none;
+            margin-top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff; /* White text color */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for visibility */
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #555; /* Medium gray text color */
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #555; /* Medium gray text color for links */
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>SecureGuard - Your Security Partner</h1>
+        <p>Empowering your digital safety with cutting-edge technology.</p>
+    </header>
+
+    <div id="loading-bar"></div>
+
+    <button id="scan-button" onclick="startScan()">Initiate Security Scan</button>
+
+    <button id="scan-again-button" onclick="scanAgain()">Scan Again</button>
+
+    <div id="warning-message">Urgent: Security Threat Detected. Take immediate action!</div>
+
+    <footer>
+        <p>&copy; 2023 SecureGuard | All Rights Reserved | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        function startScan() {
+            // Simulate a loading process
+            var loadingBar = document.getElementById('loading-bar');
+            loadingBar.style.width = '100%';
+
+            // Show the warning message after a delay
+            setTimeout(function() {
+                document.getElementById('warning-message').style.display = 'block';
+
+                // Add a class to the body to trigger the flashing background effect
+                document.body.classList.add('scan-completed');
+            }, 3000); // Show the warning message after 3 seconds (adjust as needed)
+        }
+
+        function scanAgain() {
+            // Reset the page to its initial state
+            document.body.classList.remove('scan-completed');
+            document.getElementById('loading-bar').style.width = '0';
+            document.getElementById('warning-message').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
